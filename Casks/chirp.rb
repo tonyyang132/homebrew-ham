@@ -9,6 +9,12 @@ cask 'chirp' do
   desc 'Tool for programming amateur radio'
   homepage 'https://chirpmyradio.com/projects/chirp/wiki/Home'
 
+  livecheck do
+    url 'https://archive.chirpmyradio.com/chirp_next/'
+    regex(/next-(\d{8})/i)
+    strategy :page_match
+  end
+
   app 'CHIRP.app'
 
   zap trash: '~/.chirp'
