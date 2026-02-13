@@ -1,0 +1,28 @@
+# .rubocop.yml
+
+# Turn off the "New Cops" spam in your logs
+AllCops:
+  NewCops: disable
+  SuggestExtensions: false
+
+# Homebrew Casks should NOT have frozen_string_literal comments
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Allow long lines for URLs and descriptions, which are common in Casks
+Layout/LineLength:
+  Max: 130
+  AllowedPatterns:
+    - !ruby/regexp /url/
+    - !ruby/regexp /homepage/
+    - !ruby/regexp /desc/
+
+# Homebrew uses double quotes almost everywhere
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Disable complex metric checks that don't apply to Cask DSL
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
