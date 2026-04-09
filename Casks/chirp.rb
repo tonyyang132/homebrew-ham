@@ -47,5 +47,11 @@ cask "chirp" do
 
   app "CHIRP.app"
 
+  postflight do
+    system_command "xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/CHIRP.app"],
+                   sudo: false
+  end
+
   zap trash: "~/.chirp"
 end
